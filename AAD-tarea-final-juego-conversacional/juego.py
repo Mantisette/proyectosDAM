@@ -534,10 +534,12 @@ def ir_sala(sala_destino):
   for i in lista_salas:
     if i[0] == sala_actual:
       descripcion = i[1]
+"""
   # ...Por si acaso
   if descripcion == "":
     print("Ha habido un error en el procesamiento de la sala. Saliendo...")
     quit()
+"""
 
   print(descripcion)
 
