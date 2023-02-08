@@ -534,10 +534,12 @@ def ir_sala(sala_destino):
   for i in lista_salas:
     if i[0] == sala_actual:
       descripcion = i[1]
+"""
   # ...Por si acaso
   if descripcion == "":
     print("Ha habido un error en el procesamiento de la sala. Saliendo...")
     quit()
+"""
 
   print(descripcion)
 
@@ -594,22 +596,21 @@ def inicio_cargar_datos_de_bd():
   sql = "SELECT * FROM objeto"
   cursor.execute(sql)
   for x in cursor:
-    lista = [x[1], x[2]]
+    lista = [x[0], x[1]]
     lista_objetos.append(lista)
 
   # Recoger personajes de la BD
   sql = "SELECT * FROM personaje"
   cursor.execute(sql)
   for x in cursor:
-    lista = [x[1], x[2]]
+    lista = [x[0], x[1]]
     lista_personajes.append(lista)
 
   # Recoger record de la BD
   sql = "SELECT * FROM record"
   cursor.execute(sql)
   for x in cursor:
-    record = x[1]
-
+    record = x[0]
 
 def main():
   inicio_cargar_datos_de_bd()
