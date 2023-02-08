@@ -85,17 +85,11 @@ def tokenizar(frase):
       for palabra_valida in categoria_lista_tokens[0]:  # Cada palabra recogida en la sublista asignada a ese token
         if palabra == palabra_valida:
           tokens_input_usuario.append(categoria_lista_tokens[1])
-        # end if
-      # end loop
-    # end loop
-  # end loop
 
   if len(tokens_input_usuario) != len(frase):  # Si ha fallado alguna tokenización
     tokens_input_usuario = []
-  # end if
 
   return tokens_input_usuario
-# end fun
 
 
 # Comprobación sintáctica. Devuelve un boolean indicando si la sintaxis se adecúa a las reglas definidas al principio
@@ -103,7 +97,6 @@ def comprobar_sintaxis(tokens_input_usuario):
   # Si la lista de tokens está vacía, la validación no es posible
   if len(tokens_input_usuario) < 1:
     return False
-  # end if
 
   inicial = tokens_input_usuario[0]
   final = tokens_input_usuario[len(tokens_input_usuario) - 1]
@@ -114,13 +107,10 @@ def comprobar_sintaxis(tokens_input_usuario):
       return False
     else:
       return True
-    # end if
-  # end if
 
   # Las frases solo pueden empezar con verbos.
   if inicial not in regla_inicio_frase:
     return False
-  # end if
 
   for idx, token in enumerate(tokens_input_usuario[:-1]):  # Recorrer todos los tokens de la función anterior
     siguiente = tokens_input_usuario[idx + 1]  # El siguiente token para comparar
@@ -128,21 +118,14 @@ def comprobar_sintaxis(tokens_input_usuario):
       if token == regla[0]:  # Encontrar las reglas que sigue este token
         if siguiente not in regla[1]:  # Comparar si el token sigue dichas reglas
           return False
-        # end if
-      # end if
-    # end loop
-  # end loop
 
   # Las frases solo pueden acabar con direcciones, objetos o personajes.
   if final not in regla_final_frase:
     return False
-  # end if
 
   # Si el código llega hasta aquí, los tokens han pasado todos los controles
   return True
-# end fun
 
 
 def validar_sintaxis(input_usuario):
   return(comprobar_sintaxis(tokenizar(input_usuario)))
-# end fun
